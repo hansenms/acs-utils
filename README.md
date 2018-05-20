@@ -69,3 +69,62 @@ acs-engine deploy --api-model converted.json \
 ```
 
 You will be prompted to perform device login with a browser. After authentication, the ARM deployment will start.
+
+Interacting with the cluster
+----------------------------
+
+To add you new cluster to your `~/.kube/config` file:
+
+```bash
+#Merge configuration with your current kube config
+KUBECONFIG=~/.kube/config:_output/myClusterDns/kubeconfig/kubeconfig.usgovvirginia.json \
+kubectl config view --flatten > new-config
+```
+
+Back up old config:
+```bash
+cp ~/.kube/config ~/config-backup
+```
+
+Replace config file:
+
+```bash
+cp new-config ~/.kube/config
+```
+
+List contexts:
+
+```bash
+kubectl config get-contexts
+```
+
+Select the context of your new cluster:
+
+```bash
+kubectl config use-context <CONTEXT NAME>
+```
+
+Now check out your nodes:
+
+```bash
+kubectl get nodes
+```
+
+You shoudl see something like:
+
+```
+NAME                        STATUS    ROLES     AGE       VERSION
+k8s-agentpool1-76568509-0   Ready     agent     5h        v1.10.2
+k8s-agentpool1-76568509-1   Ready     agent     5h        v1.10.2
+k8s-master-76568509-0       Ready     master    5h        v1.10.2
+```
+
+Useful Commands and Tools
+-------------------------
+
+* Try to [access the web dashboard](docs/accessing-web-dashboard.md)
+
+
+To Do
+------
+* Add ELK stack
