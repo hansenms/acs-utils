@@ -110,7 +110,7 @@ Now check out your nodes:
 kubectl get nodes
 ```
 
-You shoudl see something like:
+You should see something like:
 
 ```
 NAME                        STATUS    ROLES     AGE       VERSION
@@ -123,8 +123,6 @@ Useful Commands and Tools
 -------------------------
 
 * Try to [access the web dashboard](docs/accessing-web-dashboard.md)
-
-
-To Do
-------
-* Add ELK stack
+* See list of nodes: `kubectl get no`
+* See list of pods: `kubectl get po`
+* See list of services: `kubectl get svc`
