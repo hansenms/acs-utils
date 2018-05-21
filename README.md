@@ -119,6 +119,29 @@ k8s-agentpool1-76568509-1   Ready     agent     5h        v1.10.2
 k8s-master-76568509-0       Ready     master    5h        v1.10.2
 ```
 
+Deploy a Workload
+-----------------
+
+To deploy an example web app with a public IP:
+
+```bash
+kubectl apply -f manifests/web-service.yaml
+```
+
+Check the services to get the public IP address:
+
+```bash
+kubectl get svc
+```
+
+The EXTERNAL-IP will be listed as `<pending>` for a few minutes and then you should see something like:
+
+```
+NAME               TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
+frontend-service   LoadBalancer   10.0.224.67   XX.XX.3.110   80:31651/TCP   5m
+kubernetes         ClusterIP      10.0.0.1      <none>        443/TCP        1d
+```
+
 Useful Commands and Tools
 -------------------------
 
