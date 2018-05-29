@@ -1,0 +1,32 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: web-service-internal
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web-service-internal
+    spec:
+      containers:
+      - name: dotnetwebapp
+        image: hansenms/aspdotnet:0.1
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service-internal
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+spec:
+  type: LoadBalancer
+  selector:
+    app: web-service-internal
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80

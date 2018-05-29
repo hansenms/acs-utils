@@ -58,4 +58,11 @@ json=$(echo $json | jq ".properties.servicePrincipalProfile.clientId = \"${CLIEN
 json=$(echo $json | jq ".properties.servicePrincipalProfile.secret = \"${CLIENTSECRET}\"")
 json=$(echo $json | jq ".properties.linuxProfile.ssh.publicKeys[0].keyData = \"${SSHKEY}\"")
 
+#Checking to see if we are deploying a jumpbox, in which case we should set the SSH key
+jbkey=$(echo $json | jq -r ".properties.orchestratorProfile.kubernetesConfig.privateCluster.jumpboxProfile.publicKey")
+
+if [ -z "$jbkey" ]; then
+    json=$(echo $json | jq ".properties.orchestratorProfile.kubernetesConfig.privateCluster.jumpboxProfile.publicKey = \"${SSHKEY}\"")
+fi
+
 echo $json

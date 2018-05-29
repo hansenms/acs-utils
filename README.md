@@ -142,6 +142,8 @@ frontend-service   LoadBalancer   10.0.224.67   XX.XX.3.110   80:31651/TCP   5m
 kubernetes         ClusterIP      10.0.0.1      <none>        443/TCP        1d
 ```
 
+Verify that the service is running by pointing your browser to `http://<EXTERNAL-IP>`.
+
 Useful Commands and Tools
 -------------------------
 
