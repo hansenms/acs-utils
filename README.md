@@ -148,6 +148,8 @@ Useful Commands and Tools
 -------------------------
 
 * Try to [access the web dashboard](docs/accessing-web-dashboard.md)
+* [Setup Ingress Controller](docs/setup-ingress-controller.md)
+* Deploy [web application with SSL certificate](website-ssl-cert.md).
 * See list of nodes: `kubectl get no`
 * See list of pods: `kubectl get po`
 * See list of services: `kubectl get svc`

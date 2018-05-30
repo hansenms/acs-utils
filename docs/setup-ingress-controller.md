@@ -11,7 +11,7 @@ To set up an Ingress Controller, you can use a command such as:
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
 ```
 
-Next step is to Service to get connections to the Ingress controller:
+Next step is to Service to add a Service to get connections to the Ingress controller:
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/provider/cloud-generic.yaml
